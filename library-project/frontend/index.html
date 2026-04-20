@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library Management System</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ===== LOGIN SCREEN ===== -->
+<div class="login-screen" id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">📚 <span>Lib</span>rary</div>
+    <div class="login-sub">Library Management System</div>
+
+    <div class="login-tabs">
+      <button class="login-tab active" onclick="switchLoginTab('admin')">Admin Login</button>
+      <button class="login-tab" onclick="switchLoginTab('student')">Student Login</button>
+    </div>
+
+    <div class="login-hint" id="login-hint">
+      <b>Admin demo:</b> Username: <b>admin</b> · Password: <b>admin123</b>
+    </div>
+
+    <div class="login-error" id="login-error">Invalid username or password.</div>
+
+    <div class="field">
+      <label>Username / Student ID</label>
+      <input type="text" id="login-user" placeholder="Enter username" autocomplete="username">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="login-pass" placeholder="Enter password" autocomplete="current-password">
+    </div>
+    <button class="btn primary" style="width:100%;margin-top:0.5rem" onclick="doLogin()">Sign in</button>
+
+    <div class="login-divider" id="signup-divider" style="display:none"><span>New student?</span></div>
+    <button class="signup-btn-outline" id="signup-cta" style="display:none" onclick="showSignup()">
+      ✏️ Create a student account
+    </button>
+
+    <div style="text-align:center;margin-top:1rem;font-size:12px;color:var(--text-tertiary)" id="login-footer-note">
+      Students: use your Student ID as username and password
+    </div>
+  </div>
+</div>
+
+<!-- ===== SIGNUP SCREEN ===== -->
+<div class="signup-screen" id="signup-screen">
+  <div class="signup-box">
+    <div class="signup-logo">📚 <span>Lib</span>rary</div>
+    <div class="signup-sub">Create a Student Account</div>
+
+    <div class="signup-steps" id="signup-steps">
+      <div class="signup-step active" id="sstep-1">
+        <div class="step-dot">1</div>
+        <span>Personal Info</span>
+      </div>
+      <div class="step-line" id="sline-1"></div>
+      <div class="signup-step" id="sstep-2">
+        <div class="step-dot">2</div>
+        <span>Academic Info</span>
+      </div>
+      <div class="step-line" id="sline-2"></div>
+      <div class="signup-step" id="sstep-3">
+        <div class="step-dot">3</div>
+        <span>Account Setup</span>
+      </div>
+    </div>
+
+    <div class="signup-success" id="signup-success">
+      ✅ <strong>Registration successful!</strong><br>
+      Your account is pending admin approval. You'll be able to log in once approved.<br><br>
+      <button class="btn sm" onclick="hideSignup()" style="margin-top:4px">Back to Login</button>
+    </div>
+
+    <div class="signup-error" id="signup-error"></div>
+
+    <!-- Step 1: Personal Info -->
+    <div id="signup-step-1">
+      <div class="field-row">
+        <div class="field"><label>First name *</label><input id="s-fname" placeholder="First name"></div>
+        <div class="field"><label>Last name *</label><input id="s-lname" placeholder="Last name"></div>
+      </div>
+      <div class="field"><label>Email address *</label><input id="s-email" type="email" placeholder="you@student.edu"></div>
+      <div class="field"><label>Phone number</label><input id="s-phone" placeholder="01711-000000"></div>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:0.5rem">
+        <button class="btn" onclick="hideSignup()">Back to Login</button>
+        <button class="btn primary" onclick="signupNext(1)">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Academic Info -->
+    <div id="signup-step-2" style="display:none">
+      <div class="field-row">
+        <div class="field">
+          <label>Student ID *</label>
+          <input id="s-sid" placeholder="e.g. STU004">
+        </div>
+        <div class="field">
+          <label>Year of study *</label>
+          <select id="s-year">
+            <option value="">Select year</option>
+            <option value="1">Year 1</option>
+            <option value="2">Year 2</option>
+            <option value="3">Year 3</option>
+            <option value="4">Year 4</option>
+            <option value="5">Year 5</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Department *</label>
+        <select id="s-dept">
+          <option value="">Select department</option>
+          <option>Computer Science</option>
+          <option>Physics</option>
+          <option>Mathematics</option>
+          <option>Chemistry</option>
+          <option>Biology</option>
+          <option>Engineering</option>
+          <option>Economics</option>
+          <option>Literature</option>
+          <option>History</option>
+          <option>Psychology</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:0.5rem">
+        <button class="btn" onclick="signupBack(2)">← Back</button>
+        <button class="btn primary" onclick="signupNext(2)">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Account Setup -->
+    <div id="signup-step-3" style="display:none">
+      <div class="alert blue" style="margin-bottom:1rem">
+        ℹ Your username will be your <strong>Student ID</strong>. Choose a secure password.
+      </div>
+      <div class="field">
+        <label>Password *</label>
+        <input id="s-pass" type="password" placeholder="At least 4 characters">
+      </div>
+      <div class="field">
+        <label>Confirm password *</label>
+        <input id="s-cpass" type="password" placeholder="Repeat password">
+      </div>
+      <div class="field" style="margin-bottom:0">
+        <label style="display:flex;align-items:flex-start;gap:8px;cursor:pointer;font-size:12px;color:var(--text-primary)">
+          <input type="checkbox" id="s-terms" style="width:auto;margin-top:2px">
+          I agree to the library's terms and conditions, including responsible use of library resources and prompt return of borrowed materials.
+        </label>
+      </div>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:1rem">
+        <button class="btn" onclick="signupBack(3)">← Back</button>
+        <button class="btn primary" onclick="doSignup()">Create Account</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MAIN APP ===== -->
+<div class="app app-hidden" id="app">
+  <nav class="sidebar" id="sidebar">
+    <div class="logo">📚 <span>Lib</span>rary <span id="role-badge-logo"></span></div>
+    <div id="nav-links"></div>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="avatar" id="sidebar-avatar"></div>
+        <div>
+          <div class="uname" id="sidebar-uname"></div>
+          <div class="urole" id="sidebar-urole"></div>
+        </div>
+      </div>
+      <div id="sidebar-stats"></div>
+      <button class="btn sm" style="width:100%;margin-top:8px" onclick="doLogout()">Sign out</button>
+    </div>
+  </nav>
+  <main class="main" id="main"></main>
+</div>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-bg" id="modal-bg" onclick="closeModalOutside(event)">
+  <div class="modal" id="modal-box">
+    <h2 id="modal-title">Modal</h2>
+    <div id="modal-body"></div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn primary" id="modal-save" onclick="saveModal()">Save</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/db.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/student.js"></script>
+<script src="js/modals.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
