@@ -1,5 +1,23 @@
-# 📚 Library Management System
+# 🚀 Project Name: 📚 Library Management System
 
+## 📖 **Overview**
+The Library Management System is a software application designed to efficiently manage library operations such as book issuing, returning, and record keeping. It helps reduce manual work by organizing data digitally and improving accuracy. This system ensures easy access, better tracking, and smooth management of library resources.
+
+## 👥 **Group Details**
+- **Group Number:** **08**  
+- **Course Name:** **Database Management System Lab**  
+- **Instructor:** **Fahmidur Rahman Sakib**
+- 
+### 👨‍💻 Group Members Contributions:
+- **Halima Begum (ID: 241-115-041)** – **ER Diagram Design**  
+- **Srishtee Talukder (ID: 241-115-034)** – **Database Design & Management**  
+- **Sumi Das (ID: 241-115-015)** – **Backend Development**  
+- **Mokarroma Khanam Juthi (ID: 241-115-003)** – **Frontend Development & Overall Project Coordination**
+
+- ## 🎯 **Objective**
+
+The objective of this project is to overcome the limitations of manual library management by developing a digital system that automates book issuing, returning, and record tracking. It improves efficiency, reduces errors, and ensures well-organized data handling, making library management faster and more reliable.
+-  
 A fully client-side Library Management System built with vanilla HTML, CSS, and JavaScript. Uses **IndexedDB** for persistent in-browser storage — no backend or server required to run.
 
 ---
@@ -116,3 +134,7 @@ Open `ER-diagram/er-diagram.html` in a browser to view the entity relationship d
 - [ ] Barcode / QR code scanning
 - [ ] Book cover images via ISBN lookup
 - [ ] Export reports as CSV/PDF
+
+## 🎥 **Demo Video**
+[▶️ Watch Project Demo](#)  
+
