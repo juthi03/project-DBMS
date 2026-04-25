@@ -17,6 +17,7 @@ The Library Management System is a software application designed to efficiently 
 - ## 🎯 **Objective**
 
 The objective of this project is to overcome the limitations of manual library management by developing a digital system that automates book issuing, returning, and record tracking. It improves efficiency, reduces errors, and ensures well-organized data handling, making library management faster and more reliable.
+
 -  
 A fully client-side Library Management System built with vanilla HTML, CSS, and JavaScript. Uses **IndexedDB** for persistent in-browser storage — no backend or server required to run.
 
