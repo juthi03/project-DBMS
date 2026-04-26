@@ -137,5 +137,5 @@ Open `ER-diagram/er-diagram.html` in a browser to view the entity relationship d
 - [ ] Export reports as CSV/PDF
 
 ## 🎥 **Demo Video**
-[▶️ Watch Project Demo](#)  
+[▶️ Watch Project Demo]()https://drive.google.com/file/d/1nUXlhzcy59cDCk8z6K2vADlUmQF53PlG/view?usp=drive_link  
 
